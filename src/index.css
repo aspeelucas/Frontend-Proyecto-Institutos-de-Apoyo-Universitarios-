@@ -1,0 +1,115 @@
+.contenedorError{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.positionError{
+    position: absolute;
+    margin: auto;
+}
+.pokeModal{
+    background-color: #b2d3ec;
+    border-radius: 20px;
+}
+
+.pokeModal img {
+    width: 200px;
+   
+}
+.pokeDescription{
+    background-color: #c0d9ec;
+border-radius: 20px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.botonesBoxPokedex{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    width:100%;
+    gap: 0px;
+}
+.boxDashboard{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    flex-direction: row;
+    gap: 0px;
+                
+}
+.tareasCompletadas{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    background-color:#173247 ;
+    padding: 50px;
+    border-radius: 10px;
+    width: 40%;
+}
+
+.arrowImgReturn{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    rotate: 270deg;
+}
+.arrowImgNext{
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    rotate: 90deg;
+}
+
+.modalFormPost{
+    position: 'absolute';
+    top: '50%';
+    left: '50%';
+    transform: 'translate(-50%, -50%)';
+    width: 400;
+    background-color: 'background.paper';
+    border: '2px solid #000';
+    box-shadow:24 ;
+    padding: 4;
+}
+
+@media screen and (max-width: 600px){
+    .botonesBoxPokedex{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        margin-top: 20px;
+        width:100%;
+        gap: 10px;
+    }
+
+    .boxDashboard{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 40px;
+        margin-bottom: 40px;
+        gap: 20px;
+                    
+    }
+    .tareasCompletadas{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        background-color:#173247 ;
+        padding: 50px;
+        border-radius: 10px;
+        width: 70%;
+    }
+};

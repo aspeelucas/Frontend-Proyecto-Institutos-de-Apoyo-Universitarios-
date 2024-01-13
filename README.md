@@ -36,7 +36,7 @@ https://www.youtube.com/watch?v=QkmaCSzrUwk&ab_channel=LucasAspee
 
 ## Creado con :
 
-* [React] 
+* [React] https://es.react.dev/
 * [MaterialMui] https://mui.com/
 * [react-toastify] https://www.npmjs.com/package/react-toastify
 * [Redux] https://redux.js.org/

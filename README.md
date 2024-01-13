@@ -1,70 +1,49 @@
-# Getting Started with Create React App
+# Proyecto institutos de apoyo universitarios para la carrera de medicina destinado a alumnos y profesores de la Univerisdad Nacional de La Rioja y Barcelo.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Mi nombre es Lucas Aspee .
 
-## Available Scripts
+El Proyecto de Institutos de Apoyo Universitario (P.I.A.U) fue creado con la intención de brindar una herramienta de búsqueda a todos los estudiantes e institutos de apoyo universitarios relacionados a la carrera de Medicina de las universidades de La Rioja capital. La idea del proyecto es que cada usuario pueda conocer todos los institutos disponibles en la ciudad, como así también agregar o editar nuevos , para que la misma comunidad realice sus aportes o simplemente obtenga información acerca de los mismos.
 
-In the project directory, you can run:
+Se trata de una app web creada con React y diferentes librerias que se mencionan al final. La app consta de 2 vistas , un home general  y una en donde se muestran todos los institutos y las diferentes acciones que se pueden realizar con ellos, tanto como agregar, editar, borrar, ver ubicacion por medio de geolocalizacion.
 
-### `npm start`
+## Requerimientos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1-Descargar del siguiente repositorio la api con la que esta conectada y ejecutarla de forma local  https://github.com/aspeelucas/Backend-Proyecto-Institutos-de-Apoyo-Universitarios
+2- Para el correcto funcionamiento es necesario instalar las dependencias figuradas en el package.json
+```
+- npm i
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+## Modo de ejecucion
+En la consola escribir el siguiente comando :
+```
+- npm start
+```
+Si el script se ejecuto correctamente se abrira en el navegador la app web
+NOTA: El servidor de la api se ejectura en el puerto 3000, es recomendable iniciar primero dicha api y luego la app web del frontend, en la consola nos aparecera el aviso de si deseamos utilizar otro puerto local , debemos seleccionar que si para el correcto funcionamiento de la app web.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Demo de navegabilidad
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+https://www.youtube.com/watch?v=QkmaCSzrUwk&ab_channel=LucasAspee
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Creado con :
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* [React] 
+* [MaterialMui] https://mui.com/
+* [react-toastify] https://www.npmjs.com/package/react-toastify
+* [Redux] https://redux.js.org/
+* [Axios] https://axios-http.com/
+* [React-leaflet] https://react-leaflet.js.org/
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Autor
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [LucasAspee]

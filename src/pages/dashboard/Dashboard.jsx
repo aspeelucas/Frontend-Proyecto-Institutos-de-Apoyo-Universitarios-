@@ -1,187 +1,118 @@
 import React from "react";
 import { Paper, Box, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-import CloudSyncIcon from "@mui/icons-material/CloudSync";
-import { useSelector } from "react-redux";
-import { appSelector } from "../redux/appRedux";
-import CheckIcon from '@mui/icons-material/Check';
-import PendingActionsIcon from '@mui/icons-material/PendingActions';
+import ArticleIcon from "@mui/icons-material/Article";
 
 const Dashboard = () => {
-  const todo = useSelector(appSelector.todo);
   const navigate = useNavigate();
-  const getCompleted = () => {
-    const completed = todo.filter((t) => t.completed === true);
-    return completed.length;
-  };
-
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        mt: 10,
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Typography
-          variant="h3"
-          sx={{
-            color: "primary.main",
-            fontWeight: "bold",
-          }}
-        >
-          {" "}
-          Dashboard
-        </Typography>
+    <div>
+      <div className="headerDashboard">
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
-            alignItems: "centers",
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "rgba(0,0,0,0.75)",
             width: "100%",
-            gap: 10,
-            mt: 10,
           }}
         >
-          <Paper
-            onClick={() => navigate("./todo")}
+          <Typography
+            variant="h3"
             sx={{
-              display: "flex",
-              flexDirection: "column",
-              width: " 100%",
-              gap: 2,
-              cursor: "pointer",
-              transition: "0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
+              color: "white",
+              fontWeight: "bold",
+              width: "50%",
+              textAlign: "center",
             }}
           >
-            <Box
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: 2,
-                marginTop: "40px",
-              }}
-            >
-              <AutoStoriesIcon
-                sx={{
-                  fontSize: 50,
-                }}
-              />
-              <Typography
-                sx={{ marginTop: "5px", fontSize: "40px" }}
-                variant="h4"
-              >
-                Todo
-              </Typography>
-            </Box>
-            <Box className="boxDashboard"
-             
-            >
-              <Box className="tareasCompletadas"
-              >
-                <Typography variant="h4" sx={{ textAlign: "center" }}>
-                  TAREAS{" "}
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{ textAlign: "center", marginTop: "-30px" }}
-                >
-                  COMPLETADAS
-                </Typography>
-                <CheckIcon sx={{fontSize:'40px',marginTop:'-30px',marginBottom:'-20px'}}/>
-                <Typography variant="h4">
-                  {` ${getCompleted()} / ${todo.length} `}
-                </Typography>
-              </Box>
-              <Box className="tareasCompletadas"
-              >
-                <Typography variant="h4" sx={{ textAlign: "center" }}>
-                  TAREAS{" "}
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{ textAlign: "center", marginTop: "-30px" }}
-                >
-                  {" "}
-                  PENDIENTES
-                </Typography>
-                <PendingActionsIcon sx={{fontSize:'40px',marginTop:'-30px',marginBottom:'-20px'}}/>
-                <Typography variant="h4">
-                  {` ${todo.length - getCompleted()} / ${todo.length} `}
-                </Typography>
-              </Box>
-            </Box>
-          </Paper>
-
-          <Paper
-            onClick={() => navigate("./fetch-list")}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: 200,
-              gap: 2,
-              width: "100%",
-              cursor: "pointer",
-              transition: "0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-            }}
-          >
-            <CloudSyncIcon
-              sx={{
-                fontSize: 50,
-              }}
-            />
-            <Typography variant="h4" sx={{ fontSize: "40px" }}>
-              Fetchlist
-            </Typography>
-          </Paper>
-{/* }}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}}} */}
-          <Paper
-            onClick={() => navigate("./institutes-list")}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              height: 200,
-              gap: 2,
-              width: "100%",
-              cursor: "pointer",
-              transition: "0.2s",
-              "&:hover": {
-                transform: "scale(1.05)",
-              },
-            }}
-          >
-            <CloudSyncIcon
-              sx={{
-                fontSize: 50,
-              }}
-            />
-            <Typography variant="h4" sx={{ fontSize: "40px" }}>
-              INSTITUTOS DE APOYO DE MEDICINA
-            </Typography>
-          </Paper>
-
-
+            {" "}
+            Bienvenidos a Proyecto de Institutos de Apoyo Universitario
+            (P.I.A.U)
+          </Typography>
         </Box>
+      </div>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: 10,
+        }}
+      >
+        <Typography
+          sx={{
+            color: "primary.main",
+            fontWeight: "bold",
+            width: "100%",
+            textAlign: "center",
+            marginTop: "150px",
+            fontSize: "40px",
+          }}
+        >
+          {" "}
+          Acerca del proyecto :
+        </Typography>
+        <Typography
+          sx={{
+            color: "primary.main",
+            fontWeight: "bold",
+            width: "50%",
+            textAlign: "center",
+            marginTop: "10px",
+            fontSize: "20px",
+          }}
+        >
+          {" "}
+          El Proyecto de Institutos de Apoyo Universitario (P.I.A.U) fue creado
+          con la intención de brindar una herramienta de búsqueda a todos los
+          estudiantes e institutos de apoyo universitarios relacionados a la
+          carrera de Medicina de las universidades de La Rioja capital. La idea
+          del proyecto es que cada usuario pueda conocer todos los institutos
+          disponibles en la ciudad, como así también agregar o editar nuevos ,
+          para que la misma comunidad realice sus aportes o simplemente obtenga
+          información acerca de los mismos.
+        </Typography>
       </Box>
-    </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "100%",
+          gap: 10,
+          mt: 10,
+          mb: 30,
+        }}
+      >
+        <Paper
+          onClick={() => navigate("./institutes-list")}
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            height: 100,
+            gap: 2,
+            width: "15%",
+            cursor: "pointer",
+            transition: "0.2s",
+            "&:hover": {
+              transform: "scale(1.05)",
+            },
+          }}
+        >
+          <ArticleIcon
+            sx={{
+              fontSize: 50,
+            }}
+          />
+          <Typography sx={{ fontSize: "25px" }}>Ver Institutos</Typography>
+        </Paper>
+      </Box>
+    </div>
   );
 };
 export default Dashboard;

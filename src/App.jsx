@@ -4,6 +4,8 @@ import { BrowserRouter } from "react-router-dom";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import Routes from "./pages/routes";
 import { createTheme } from "@mui/material";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -39,6 +41,7 @@ function App() {
 
 <ThemeProvider theme={theme}>
       <CssBaseline>
+        <ToastContainer/>
         <BrowserRouter>
           <Routes />
         </BrowserRouter>

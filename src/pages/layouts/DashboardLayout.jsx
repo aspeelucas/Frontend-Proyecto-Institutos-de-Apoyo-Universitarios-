@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { SideMenu } from "../../components/SideMenu";
 import MenuIcon from "@mui/icons-material/Menu";
+import Footer from "../../components/Footer";
 import {
   AppBar,
   Toolbar,
   Box,
   Typography,
-  
   Container,
   Button,
   
@@ -37,7 +37,7 @@ const DashboardLayout = () => {
             noWrap
             sx={{ flexGrow: 1 }}
           >
-            Pilar  Web
+            P.I.A.U
           </Typography>
           <PopMenu/>
         </Toolbar>
@@ -55,10 +55,12 @@ const DashboardLayout = () => {
         }}
       >
         <Toolbar />
-        <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
+        <Container maxWidth="l" sx={{ mt: 0}}>
           <Outlet />
         </Container>
+        <Footer/>
       </Box>
+      
     </Box>
   );
 };

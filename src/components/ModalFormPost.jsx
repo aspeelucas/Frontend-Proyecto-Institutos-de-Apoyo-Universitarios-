@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { CardContent, TextField } from "@mui/material";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const style = {
@@ -11,29 +12,54 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
+  width: 700,
   bgcolor: "background.paper",
   border: "2px solid #000",
   boxShadow: 24,
   p: 4,
+  background: "primary.main",
+  borderRadius: "20px",
 };
 
-export default function ModalFormPost() {
+export default function ModalFormPost({
+  buttonText = `Open Modal`,
+  institute,
+  fetchInstitutes,
+  buttonStyle = "light",
+}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const isEdit = Boolean(institute);
   const initialFormValues = {
     nombre: "",
     descripcion: "",
     img: "",
+    direccion: "",
+    telefono: "",
+    email: "",
     coordenadas: {
       latitud: "",
       longitud: "",
     },
   };
   const [formData, setFormData] = useState(initialFormValues);
-  
-  
+  useEffect(() => {
+    if (isEdit) {
+      setFormData({
+        nombre: institute.nombre,
+        descripcion: institute.descripcion,
+        img: institute.img,
+        direccion: institute.direccion,
+        telefono: institute.telefono,
+        email: institute.email,
+        coordenadas: {
+          latitud: institute.coordenadas.latitud,
+          longitud: institute.coordenadas.longitud,
+        },
+      });
+    }
+  }, [isEdit, institute]);
 
   const handleChange = (e) => {
     if (e.target.name !== "latitud" && e.target.name !== "longitud") {
@@ -59,30 +85,77 @@ export default function ModalFormPost() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:3000/places",
-        formData,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
-
-      // La solicitud fue exitosa, puedes manejar la respuesta aquí
+      const response = isEdit
+        ? await axios.patch(
+            `http://localhost:3000/places/${institute.id}`,
+            formData,
+            {
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+              },
+            }
+          )
+        : await axios.post("http://localhost:3000/places", formData, {
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          });
       console.log("Datos enviados correctamente:", response.data);
       handleReset();
-      handleClose();
+      await fetchInstitutes();
+      return toast.success("Se agrego con exito el instituto", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
-      // La solicitud falló, manejar el error
       console.error("Error al enviar datos a la API:", error.message);
+      return toast.error("Error al enviar datos. Revisa los campos", {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     }
+  };
+
+  const buttonColors = {
+    light: {
+      color: "white",
+      backgroundColor: "primary.main",
+      fontSize: "20px",
+      ":hover": { color: "primary.main" },
+    },
+    dark: {
+      color: "primary.main",
+      backgroundColor: "white",
+      borderRadius: "5px",
+      fontSize: "13px",
+      ":hover": { color: "white" ,backgroundColor:"rgba(7, 20, 102, 0.95)"},
+    },
   };
 
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button
+        variant="outlined"
+        size="small"
+        sx={buttonColors[buttonStyle]}
+        onClick={handleOpen}
+      >
+        {buttonText}
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -90,12 +163,19 @@ export default function ModalFormPost() {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Agregar Instituto
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            align="center"
+            fontSize={40}
+          >
+            {isEdit ? `Editar` : `Agregar un nuevo`} Instituto
           </Typography>
           <form onSubmit={handleSubmit}>
             <CardContent>
               <TextField
+                sx={{ width: "100%" }}
                 error={false}
                 type="text"
                 id="outlined-basic"
@@ -111,6 +191,7 @@ export default function ModalFormPost() {
               <TextField
                 error={false}
                 type="text"
+                sx={{ width: "100%" }}
                 id="outlined-basic"
                 label="Descripcion"
                 value={formData.descripcion}
@@ -123,19 +204,64 @@ export default function ModalFormPost() {
             <CardContent>
               <TextField
                 error={false}
-                type="text"
+                type="url"
+                sx={{ width: "100%" }}
                 id="outlined-basic"
                 value={formData.img}
-                label="Url de Imagen"
+                label="URL de Imagen"
                 onChange={handleChange}
                 helperText="Campo Obligatorio"
                 variant="outlined"
                 name="img"
               />
             </CardContent>
+            <CardContent>
+              <TextField
+                error={false}
+                type="number"
+                sx={{ width: "100%" }}
+                id="outlined-basic"
+                value={formData.telefono}
+                label="Telefono"
+                onChange={handleChange}
+                helperText="Campo Obligatorio"
+                variant="outlined"
+                name="telefono"
+              />
+            </CardContent>
+            <CardContent>
+              <TextField
+                error={false}
+                type="email"
+                sx={{ width: "100%" }}
+                id="outlined-basic"
+                value={formData.email}
+                label="Email"
+                onChange={handleChange}
+                helperText="Campo Obligatorio"
+                variant="outlined"
+                name="email"
+              />
+            </CardContent>
+            <CardContent>
+              <TextField
+                error={false}
+                type="text"
+                sx={{ width: "100%" }}
+                id="outlined-basic"
+                value={formData.direccion}
+                label="Direccion"
+                onChange={handleChange}
+                helperText="Campo Obligatorio"
+                variant="outlined"
+                name="direccion"
+              />
+            </CardContent>
             <Box>
-              <Typography>Ubicacion</Typography>
-              <CardContent>
+              <Typography align="center">Ubicacion en Coordenadas</Typography>
+              <CardContent
+                sx={{ display: "flex", justifyContent: "space-between" }}
+              >
                 <TextField
                   error={false}
                   type="number"
@@ -147,8 +273,6 @@ export default function ModalFormPost() {
                   variant="outlined"
                   name="latitud"
                 />
-              </CardContent>
-              <CardContent>
                 <TextField
                   error={false}
                   type="number"
@@ -162,10 +286,30 @@ export default function ModalFormPost() {
                 />
               </CardContent>
             </Box>
-            <Box sx={{ display: "flex", justifyContent: "center" }}>
-              <Button variant="contained" color="success"disabled={formData.nombre === "" || formData.descripcion === "" || formData.img === "" || formData.coordenadas.latitud === "" || formData.coordenadas.longitud === ""}
-               type="submit">
-                Success
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                flexDirection: "column",
+              }}
+            >
+              <Button
+                variant="contained"
+                color="success"
+                disabled={
+                  formData.nombre === "" ||
+                  formData.descripcion === "" ||
+                  formData.img === "" ||
+                  formData.coordenadas.latitud === "" ||
+                  formData.coordenadas.longitud === ""||
+                  formData.direccion === ""||
+                  formData.email === ""||
+                  formData.telefono === ""
+                }
+                type="submit"
+              >
+                {isEdit ? `Editar` : `Agregar`} Instituto
               </Button>
             </Box>
           </form>
@@ -173,84 +317,4 @@ export default function ModalFormPost() {
       </Modal>
     </div>
   );
-}
-
-{
-  /* <Button onClick={handleOpen}>Open modal</Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            Agregar Instituto
-          </Typography>
-          <CardContent>
-            <TextField
-              error={false}
-              type="text"
-              id="outlined-basic"
-              
-              label="Nombre del Instituto"
-              helperText="Campo Obligatorio"
-              variant="outlined"
-              name="nombre-instituto"
-            />
-          </CardContent>
-          <CardContent>
-            <TextField
-              error={false}
-              type="text"
-              id="outlined-basic"
-              label="Descripcion"
-              helperText="Campo Obligatorio"
-              variant="outlined"
-              name="descripcion-instituto"
-            />
-          </CardContent>
-          <CardContent>
-            <TextField
-              error={false}
-              type="url"
-              id="outlined-basic"
-              label="Url de Imagen"
-              helperText="Campo Obligatorio"
-              variant="outlined"
-              name="img-instituto"
-            />
-          </CardContent>
-          <Box>
-            <Typography>Ubicacion</Typography>
-            <CardContent>
-              <TextField
-                error={false}
-                type="number"
-                id="outlined-basic"
-                label="Latitud"
-                helperText="Campo Obligatorio"
-                variant="outlined"
-                name="nombre-instituto"
-              />
-            </CardContent>
-            <CardContent>
-              <TextField
-                error={false}
-                type="number"
-                id="outlined-basic"
-                label="Longitud"
-                helperText="Campo Obligatorio"
-                variant="outlined"
-                name="nombre-instituto"
-              />
-            </CardContent>
-          </Box>
-          <Box sx={{display:"flex" , justifyContent:"center"}}>
-            <Button variant="contained" color="success">
-              Success
-            </Button>
-          </Box>
-        </Box>
-      </Modal> */
 }

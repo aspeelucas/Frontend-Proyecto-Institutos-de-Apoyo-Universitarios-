@@ -1,115 +1,71 @@
-.contenedorError{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.contenedorError {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.positionError{
-    position: absolute;
-    margin: auto;
-}
-.pokeModal{
-    background-color: #b2d3ec;
-    border-radius: 20px;
+.positionError {
+  position: absolute;
+  margin: auto;
 }
 
-.pokeModal img {
-    width: 200px;
-   
-}
-.pokeDescription{
-    background-color: #c0d9ec;
-border-radius: 20px;
-padding-top: 10px;
-padding-bottom: 10px;
+.boxDashboard {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  flex-direction: row;
+  gap: 0px;
 }
 
-.botonesBoxPokedex{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-    width:100%;
-    gap: 0px;
+.modalFormPost {
+  position: "absolute";
+  top: "50%";
+  left: "50%";
+  transform: "translate(-50%, -50%)";
+  width: 400;
+  background-color: "background.paper";
+  border: "2px solid #000";
+  box-shadow: 24;
+  padding: 4;
 }
-.boxDashboard{
-    display: flex;
-    justify-content: space-around;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    flex-direction: row;
-    gap: 0px;
-                
+.headerDashboard {
+  background-image: url("https://clasesparticulares.com.ar/one-page/images/page/main.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 500px;
+  width: 100%;
+  margin-top: 0px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
 }
-.tareasCompletadas{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 40px;
-    background-color:#173247 ;
-    padding: 50px;
-    border-radius: 10px;
-    width: 40%;
+.headerInstitutesList {
+  background-image: url("https://images.ctfassets.net/p0qf7j048i0q/5wWKmjZF2wLtZ0OxVTAgGA/8090476e22c99481f46ff59d3be2ad9f/G1413673361.png?w=3840&q=75&h=3840&fm=webp");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 100%;
+  margin-top: 0px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 150px;
 }
-
-.arrowImgReturn{
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    rotate: 270deg;
-}
-.arrowImgNext{
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    rotate: 90deg;
-}
-
-.modalFormPost{
-    position: 'absolute';
-    top: '50%';
-    left: '50%';
-    transform: 'translate(-50%, -50%)';
-    width: 400;
-    background-color: 'background.paper';
-    border: '2px solid #000';
-    box-shadow:24 ;
-    padding: 4;
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+  margin-top: 0px;
+  padding-left: 0px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0px;
 }
 
-@media screen and (max-width: 600px){
-    .botonesBoxPokedex{
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center;
-        margin-top: 20px;
-        width:100%;
-        gap: 10px;
-    }
-
-    .boxDashboard{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        margin-top: 40px;
-        margin-bottom: 40px;
-        gap: 20px;
-                    
-    }
-    .tareasCompletadas{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 40px;
-        background-color:#173247 ;
-        padding: 50px;
-        border-radius: 10px;
-        width: 70%;
-    }
-};
+@media screen and (max-width: 600px) {
+}
